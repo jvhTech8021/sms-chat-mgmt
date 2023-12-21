@@ -42,32 +42,6 @@ def register():
     return render_template('register.html')
 
 
-# @app.route('/create_group', methods=['GET', 'POST'])
-# def create_group():
-#     if request.method == 'POST':
-#         group_name = request.form['group_name']
-#         if group_name:
-#             # Retrieve user information from the session
-#             user_id = session.get('user_id')
-
-#             # Add the user (from the registration step) to the group chat's users list
-#             user = User.query.get(user_id)
-
-#             # Create Twilio group chat and add user
-#             conversation = createChatAndAddParticipant(user.name, user.phone_number, group_name)
-
-#             new_group = GroupChats(**conversation)
-#             new_group.users.append(user)
-
-#             db.session.add(new_group)
-#             db.session.commit()
-
-#             return redirect(url_for('group_created', group_name=group_name))
-
-
-#         return 'Group name is required'
-#     return render_template('create_group.html')
-
 @app.route('/conversations', methods=['GET', 'POST'])
 def conversations():
     # Handle POST request for creating a new group
@@ -101,19 +75,6 @@ def conversations():
 
     # Render a template that combines group creation and conversation list
     return render_template('conversations.html', conversations=conversations, user_conversation_ids=user_conversation_ids)
-
-# def list_conversations():
-#     # Retrieve user information from the session
-#     user_id = session.get('user_id')
-#     user = User.query.get(user_id)
-
-#     # Query the GroupChats table to get a list of conversations
-#     conversations = GroupChats.query.all()
-
-#     # Create a set of conversation IDs that the user is a member of
-#     user_conversation_ids = {c.id for c in user.group_chats} if user else set()
-
-#     return render_template('conversations.html', conversations=conversations, user_conversation_ids=user_conversation_ids)
 
 
 @app.route('/join_conversation/<int:conversation_id>', methods=['POST'])
