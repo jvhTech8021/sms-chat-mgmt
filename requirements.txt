@@ -16,7 +16,6 @@ MarkupSafe
 multidict
 mysql
 mysql-connector-python
-mysqlclient
 protobuf
 PyJWT
 requests

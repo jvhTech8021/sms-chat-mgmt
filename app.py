@@ -68,7 +68,7 @@ def register():
 #         return 'Group name is required'
 #     return render_template('create_group.html')
 
-@app.route('/conversations')
+@app.route('/conversations', methods=['GET', 'POST'])
 def conversations():
     # Handle POST request for creating a new group
     if request.method == 'POST':
