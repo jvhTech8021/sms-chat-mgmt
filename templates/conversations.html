@@ -13,12 +13,14 @@
     <br>
     <h1>Conversations</h1>
     <ul>
-        <li>
-            <strong>{{ conversation.friendly_name }}</strong>
-            <form method="POST" action="{{ url_for('join_conversation', conversation_id=conversation.id) }}">
-                <button type="submit">Join</button>
-            </form>
-        </li>
+        {% for conversation in conversations %}
+            <li>
+                <strong>{{ conversation.friendly_name }}</strong>
+                <form method="POST" action="{{ url_for('join_conversation', conversation_id=conversation.id) }}">
+                    <button type="submit">Join</button>
+                </form>
+            </li>
+        {% endfor %}
     </ul>
 </body>
 </html>

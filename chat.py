@@ -41,7 +41,8 @@ def createChatAndAddParticipant(user_name, number, chat_name):
     chat_details = {
         "name": chat_name,
         "sid": conversation.sid,
-        "participants": {}
+        "participants": {
+        }
     }
 
     # create chat manager
@@ -91,6 +92,7 @@ def createChatAndAddParticipant(user_name, number, chat_name):
     return conversationObj
 
 def joinChat(conversationSid, number):
+    number = format_phone_number(number)
     client.conversations \
         .v1 \
         .conversations(conversationSid) \

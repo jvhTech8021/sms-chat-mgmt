@@ -92,11 +92,7 @@ def join_conversation(conversation_id):
     
     joinChat(conversation.sid, user.phone_number)
 
-    return redirect(url_for('list_conversations'))
-
-@app.route('/group_created/<group_name>')
-def group_created(group_name):
-    return f'Group "{group_name}" has been created successfully!'
+    return redirect(url_for('conversations'))
 
 if __name__ == '__main__':
     app.run(debug=True)
